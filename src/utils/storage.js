@@ -8,11 +8,7 @@ export function getStorageDecks() {
   return AsyncStorage.getItem(STORAGE_KEY).then(parseDecks);
 }
 
-const parseDecks = decks => (
-  decks
-    ? JSON.parse(decks)
-    : _defaultData
-);
+const parseDecks = decks => (decks ? JSON.parse(decks) : _defaultData);
 
 export function saveStorageDeck(title) {
   const id = uuidV4();

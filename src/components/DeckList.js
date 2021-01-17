@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ const DeckList = ({ dispatch, decks, ready, navigation }) => {
     return (
       <TouchableOpacity
         style={styles.deck}
-        onPress={() => navigation.navigate('Deck', { deckId: item.title })}
+        onPress={() => navigation.navigate('Deck', { deckId: item.deckId })}
       >
         <View style={styles.deckContainer}>
           <Text style={styles.deckTitle}>{item.title}</Text>
@@ -34,7 +35,11 @@ const DeckList = ({ dispatch, decks, ready, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <FlatList data={decks} renderItem={renderItem} keyExtractor={(deck, index) => index.toString()} />
+      <FlatList
+        data={decks}
+        renderItem={renderItem}
+        keyExtractor={(deck, index) => index.toString()}
+      />
     </View>
   );
 };
@@ -77,7 +82,10 @@ const styles = StyleSheet.create({
 function mapStateToProps(decks) {
   return Object.keys(decks).length > 0
     ? {
-        decks: Object.keys(decks).map(key => decks[key]),
+        decks: Object.keys(decks).map(key => ({
+          ...decks[key],
+          deckId: key,
+        })),
         ready: true,
       }
     : {
@@ -85,5 +93,14 @@ function mapStateToProps(decks) {
         ready: false,
       };
 }
+
+DeckList.propTypes = {
+  decks: PropTypes.object,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+  ready: PropTypes.bool,
+  dispatch: PropTypes.func,
+};
 
 export default connect(mapStateToProps)(DeckList);
