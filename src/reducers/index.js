@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { GET_DECKS, SAVE_CARD_TO_DECK, SAVE_DECK, CLEAR_DECKS } from '../actions';
 
 function decks(state = {}, action) {
@@ -33,4 +32,4 @@ function decks(state = {}, action) {
   }
 }
 
-export default combineReducers({ decks });
+export default decks;

@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { handleGetDecks } from './actions';
 import PropTypes from 'prop-types';
 import Navigator from './components/MainNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 
 function App({ decks, dispatch }) {
-  const navigationRef = React.useRef(null);
-  useEffect(() => {
-    dispatch(handleGetDecks());
-  }, []);
   return (
     <View style={{ flex: 1 }}>
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer>
         <Navigator />
       </NavigationContainer>
     </View>
