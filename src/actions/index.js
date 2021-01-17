@@ -19,27 +19,21 @@ export function handleGetDecks() {
   };
 }
 
-export function handleSaveDeck(deckTitle) {
+export function handleSaveDeck(title) {
   return dispatch => {
-    return saveStorageDeck(deckTitle).then(deck => {
-      dispatch(addDeck(deck));
-    });
+    return saveStorageDeck(title).then(deck => dispatch(addDeck(deck)));
   };
 }
 
-export function handleSaveCardToDeck(deckId, card) {
+export function handleSaveCardToDeck(title, card) {
   return dispatch => {
-    return saveStorageCardToDeck(deckId, card).then(() => {
-      dispatch(addCardToDeck(deckId, card));
-    });
+    return saveStorageCardToDeck(title, card).then(() => dispatch(addCardToDeck(title, card)));
   };
 }
 
-export function handleClearDecks(deckId) {
+export function handleClearDecks(title) {
   return dispatch => {
-    return clearStorageDecks(deckId).then(() => {
-      dispatch(deleteDeck(deckId));
-    });
+    return clearStorageDecks(title).then(() => dispatch(deleteDeck(title)));
   };
 }
 
@@ -57,18 +51,18 @@ export function addDeck(deck) {
   };
 }
 
-export function addCardToDeck(deckId, card) {
+export function addCardToDeck(title, card) {
   return {
     type: SAVE_CARD_TO_DECK,
-    deckId,
+    title,
     card,
   };
 }
 
-export function deleteDeck(deckId) {
+export function deleteDeck(title) {
   return {
     type: CLEAR_DECKS,
-    deckId,
+    title,
   };
 }
 

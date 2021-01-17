@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { _defaultData } from './_DATA';
-import { v4 as uuidV4 } from 'uuid';
 
 const STORAGE_KEY = 'udacity_flash_cards';
 
@@ -10,28 +9,27 @@ export function getStorageDecks() {
 
 const parseDecks = decks => (decks ? JSON.parse(decks) : _defaultData);
 
-export function saveStorageDeck(title) {
-  const id = uuidV4();
-  return AsyncStorage.mergeItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      [id]: {
-        title,
-        questions: [],
-      },
-    }),
-  );
+export async function saveStorageDeck(title) {
+  const deck = {
+    [title]: {
+      title,
+      questions: [],
+    },
+  };
+  console.log(deck);
+  await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify(deck));
+  return deck;
 }
 
-export function saveStorageCardToDeck(deckId, card) {
+export function saveStorageCardToDeck(title, card) {
   return AsyncStorage.getItem(STORAGE_KEY)
     .then(parseDecks)
     .then(decks => {
       return {
         ...decks,
-        [deckId]: {
-          ...decks[deckId],
-          questions: [...decks[deckId].questions, card],
+        [title]: {
+          ...decks[title],
+          questions: [...decks[title].questions, card],
         },
       };
     })

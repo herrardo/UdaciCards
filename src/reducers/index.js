@@ -11,19 +11,19 @@ function decks(state = {}, action) {
       const { deck } = action;
       return {
         ...state,
-        [deck.id]: deck,
+        ...deck,
       };
     case SAVE_CARD_TO_DECK:
-      const { deckId, card } = action;
+      const { title, card } = action;
       return {
         ...state,
-        [deckId]: {
-          ...state[deckId],
-          questions: state[deckId].questions.concat([card]),
+        [title]: {
+          ...state[title],
+          questions: state[title].questions.concat([card]),
         },
       };
     case CLEAR_DECKS:
-      delete state[action.deckId];
+      delete state[action.title];
       return {
         ...state,
       };

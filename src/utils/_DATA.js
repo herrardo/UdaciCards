@@ -1,5 +1,5 @@
 export const _defaultData = {
-  'e297a1da-5913-41aa-b30d-5362f6b1cf11': {
+  'React': {
     title: 'React',
     questions: [
       {
@@ -12,7 +12,7 @@ export const _defaultData = {
       },
     ],
   },
-  '61e35188-7c1b-4c55-9834-e6122b3b1ec6': {
+  'JavaScript': {
     title: 'JavaScript',
     questions: [
       {

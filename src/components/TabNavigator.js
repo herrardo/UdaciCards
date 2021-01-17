@@ -1,15 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import DeckList from './DeckList';
+import NewDeck from './NewDeck';
 
-const MyTabs = () => {
+const Tabs = () => {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator>
       <Tab.Screen name='Decks' component={DeckList} />
-      <Tab.Screen name='New Deck' component={DeckList} />
+      <Tab.Screen name='New Deck' component={NewDeck} />
     </Tab.Navigator>
   );
 };
 
-export default MyTabs;
+export default Tabs;

@@ -15,7 +15,7 @@ const DeckList = ({ dispatch, decks, ready, navigation }) => {
     return (
       <TouchableOpacity
         style={styles.deck}
-        onPress={() => navigation.navigate('Deck', { deckId: item.deckId })}
+        onPress={() => navigation.navigate('Deck', { deckId: item.title })}
       >
         <View style={styles.deckContainer}>
           <Text style={styles.deckTitle}>{item.title}</Text>
@@ -82,10 +82,7 @@ const styles = StyleSheet.create({
 function mapStateToProps(decks) {
   return Object.keys(decks).length > 0
     ? {
-        decks: Object.keys(decks).map(key => ({
-          ...decks[key],
-          deckId: key,
-        })),
+        decks: Object.values(decks),
         ready: true,
       }
     : {
@@ -95,7 +92,10 @@ function mapStateToProps(decks) {
 }
 
 DeckList.propTypes = {
-  decks: PropTypes.object,
+  decks: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
