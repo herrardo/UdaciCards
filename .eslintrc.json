@@ -1,0 +1,56 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "plugin:jest/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-native", "prettier", "jest"],
+  "rules": {
+    "react/jsx-key": "error",
+    "react/no-unescaped-entities": 0,
+    "prettier/prettier": "error",
+    "curly": ["error", "all"],
+    "eqeqeq": "error",
+    "indent": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignoreComments": true,
+        "ignoreUrls": true
+      }
+    ],
+    "no-alert": "error",
+    "no-console": "off",
+    "no-debugger": "error",
+    "no-empty-function": "off",
+    "no-eval": "error",
+    "no-extra-parens": "off",
+    "no-template-curly-in-string": "error",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    "require-atomic-updates": "error",
+    "require-await": "error",
+    "strict": ["error", "global"]
+  },
+  "root": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
