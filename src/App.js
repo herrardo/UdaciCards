@@ -5,7 +5,6 @@ import { handleGetDecks } from './actions';
 import PropTypes from 'prop-types';
 import Navigator from './components/MainNavigator';
 import { NavigationContainer } from '@react-navigation/native';
-import { DeckList } from './components/TabNavigator';
 
 function App({ decks, dispatch }) {
   const navigationRef = React.useRef(null);
