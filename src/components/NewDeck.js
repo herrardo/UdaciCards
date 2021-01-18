@@ -9,11 +9,11 @@ import { handleSaveDeck } from '../actions';
 const NewDeck = ({ dispatch, navigation }) => {
   const [title, setTitle] = useState('');
   const createDeck = () => {
-    dispatch(handleSaveDeck(title)).then(deck =>
-      navigation.navigate('Deck', { deckId: title }),
-    );
+    dispatch(handleSaveDeck(title)).then(deck => {
+      setTitle('');
+      return navigation.navigate('Deck', { deckId: title });
+    });
   };
-
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
       <View style={styles.titleContainer}>
@@ -21,7 +21,11 @@ const NewDeck = ({ dispatch, navigation }) => {
       </View>
       <View style={styles.formContainer}>
         <TextInput style={styles.titleInput} onChangeText={setTitle} value={title} />
-        <TouchableOpacity style={styles.button} onPress={createDeck}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={createDeck}
+          disabled={title === ''}
+        >
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
