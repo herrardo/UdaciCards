@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { light_blue, white, green } from '../utils/colors';
@@ -14,7 +14,7 @@ const Deck = ({ deck, deckId, navigation }) => {
       <View style={styles.actionsContainer}>
         <TouchableOpacity
           style={styles.addCardBtn}
-          onPress={() => navigation.navigate('NewQuestion', { deckId })}
+          onPress={() => navigation.navigate('New Question', { deckId })}
         >
           <Text style={styles.addCardBtnText}>Add Card</Text>
         </TouchableOpacity>
