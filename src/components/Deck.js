@@ -20,7 +20,7 @@ const Deck = ({ deck, deckId, navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.startQuizButton}
-          onPress={() => navigation.navigate('QuizView', { deckId })}
+          onPress={() => navigation.navigate('Quiz', { deckId })}
         >
           <Text style={styles.startQuizButtonText}>Start Quiz</Text>
         </TouchableOpacity>

@@ -9,7 +9,7 @@ import { handleSaveCardToDeck } from '../actions';
 const NewQuestion = ({ dispatch, navigation, deckId }) => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-
+  const disabled = answer === '' || question === '';
   const handleSave = () => {
     dispatch(
       handleSaveCardToDeck(deckId, {
@@ -38,7 +38,7 @@ const NewQuestion = ({ dispatch, navigation, deckId }) => {
           onChangeText={setAnswer}
           value={answer}
         />
-        <TouchableOpacity style={styles.button} onPress={handleSave}>
+        <TouchableOpacity style={styles.button} disabled={disabled} onPress={handleSave}>
           <Text style={styles.btnText}>Submit</Text>
         </TouchableOpacity>
       </View>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     borderColor: black,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 4,
     padding: 4,
     fontSize: 20,
