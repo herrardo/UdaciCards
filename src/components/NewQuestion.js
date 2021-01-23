@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import { View } from 'react-native-web';
 import { connect } from 'react-redux';
 import { black, green, light_blue, white } from '../utils/colors';
@@ -24,24 +30,27 @@ const NewQuestion = ({ dispatch, navigation, deckId }) => {
   };
 
   return (
-    <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      <View style={styles.formContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder='Insert the question'
-          onChangeText={setQuestion}
-          value={question}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Insert the answer'
-          onChangeText={setAnswer}
-          value={answer}
-        />
-        <TouchableOpacity style={styles.button} disabled={disabled} onPress={handleSave}>
-          <Text style={styles.btnText}>Submit</Text>
-        </TouchableOpacity>
-      </View>
+    <KeyboardAvoidingView
+      behavior='padding'
+      style={styles.container}
+    >
+        <View style={styles.formContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder='Insert the question'
+            onChangeText={setQuestion}
+            value={question}
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder='Insert the answer'
+            onChangeText={setAnswer}
+            value={answer}
+          />
+          <TouchableOpacity style={styles.button} disabled={disabled} onPress={handleSave}>
+            <Text style={styles.btnText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
     </KeyboardAvoidingView>
   );
 };

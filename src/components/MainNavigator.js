@@ -11,7 +11,7 @@ export default function MyStack() {
     <Stack.Navigator>
       <Stack.Screen name='Home' component={Tabs} />
       <Stack.Screen name='Deck' component={Deck} />
-      <Stack.Screen name='New Question' component={NewQuestion} />
+      <Stack.Screen name='NewQuestion' component={NewQuestion} />
       <Stack.Screen name='Quiz' component={Quiz} />
     </Stack.Navigator>
   );

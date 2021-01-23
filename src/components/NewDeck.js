@@ -15,21 +15,19 @@ const NewDeck = ({ dispatch, navigation }) => {
     });
   };
   return (
-    <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>What is the title of your new deck?</Text>
-      </View>
-      <View style={styles.formContainer}>
-        <TextInput style={styles.titleInput} onChangeText={setTitle} value={title} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={createDeck}
-          disabled={title === ''}
-        >
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
+    <View>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>What is the title of your new deck?</Text>
+        </View>
+        <View style={styles.formContainer}>
+          <TextInput style={styles.titleInput} onChangeText={setTitle} value={title} />
+          <TouchableOpacity style={styles.button} onPress={createDeck} disabled={title === ''}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </View>
   );
 };
 

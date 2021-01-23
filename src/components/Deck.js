@@ -14,7 +14,7 @@ const Deck = ({ deck, deckId, navigation }) => {
       <View style={styles.actionsContainer}>
         <TouchableOpacity
           style={styles.addCardBtn}
-          onPress={() => navigation.navigate('New Question', { deckId })}
+          onPress={() => navigation.navigate('NewQuestion', { deckId })}
         >
           <Text style={styles.addCardBtnText}>Add Card</Text>
         </TouchableOpacity>

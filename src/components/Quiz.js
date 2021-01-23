@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { black, red, green, white, light_blue } from '../utils/colors';
-// import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications';
 
-const QuizView = ({ deck, deckId, navigation, dispatch }) => {
+const QuizView = ({ deck, navigation }) => {
   const [count, setCount] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  useEffect(()=>{
+    setLocalNotification();
+  },[])
 
   const answerCorrect = () => {
     setCount(count + 1);
@@ -38,7 +41,7 @@ const QuizView = ({ deck, deckId, navigation, dispatch }) => {
     );
   }
   if (count === deck.questions.length) {
-    // clearLocalNotification().then(setLocalNotification);
+    clearLocalNotification().then(setLocalNotification);
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -178,7 +181,6 @@ QuizView.propTypes = {
 function mapStateToProps(state, props) {
   const { deckId } = props.route.params;
   return {
-    deckId,
     deck: state[deckId],
   };
 }

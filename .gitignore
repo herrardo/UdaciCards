@@ -58,6 +58,8 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/ios/UdaciCards.xcworkspace/
+/ios/Podfile.lock
 
 # Expo
 .expo/*

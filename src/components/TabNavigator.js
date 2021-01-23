@@ -8,7 +8,7 @@ const Tabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name='Decks' component={DeckList} />
-      <Tab.Screen name='New Deck' component={NewDeck} />
+      <Tab.Screen name='NewDeck' component={NewDeck} />
     </Tab.Navigator>
   );
 };

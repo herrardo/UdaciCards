@@ -1,16 +1,10 @@
-import App from './src/App';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './src/reducers';
-import middleware from './src/middleware';
+import { AppRegistry, Platform } from 'react-native';
+import App from './App';
 
-const store = createStore(reducer, middleware);
+AppRegistry.registerComponent('main', () => App);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'),
-);
+if (Platform.OS === 'web') {
+  AppRegistry.runApplication('main', {
+    rootTag: document.getElementById('root'),
+  });
+}
