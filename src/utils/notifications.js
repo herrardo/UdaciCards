@@ -11,8 +11,8 @@ export const clearLocalNotification = () => (
 );
 
 const createStudyNotification = () => ({
-  title: 'Dude do some quiz!!!',
-  body: '👋 Cont forget to do some learning today!',
+  title: 'Dude, do some quiz!!!',
+  body: 'Dont forget to do some learning today!',
   ios: {
     sound: true,
   },
